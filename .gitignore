@@ -1,4 +1,4 @@
-.pio
-.vscode
-.old
-.test
+.pio/
+.vscode/
+old/
+test/
