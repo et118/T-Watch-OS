@@ -22,7 +22,8 @@ class Program {
 		virtual void init()=0;
 		virtual void update()=0;
 		virtual void sleepUpdate()=0;
-		virtual ProgramSleepMode sleep()=0;
+		virtual ProgramSleepMode getSleepMode()=0;
+		virtual void sleep()=0;
 		virtual void wakeup()=0;
-		virtual void exit()=0;
+		virtual void exit()=0; //ADD MAIN BUTTON PRESS CHECK
 };

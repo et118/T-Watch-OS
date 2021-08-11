@@ -1,20 +1,22 @@
-
+//TODO Graphics library with buttons and stuff
 #include "config.h"
 #include "InfoLib.h"
 #include "Program.h"
 #include "ClockProgram.h"
 #include "StopwatchProgram.h"
+#include "TimerProgram.h"
 #include "esp_wifi.h"
 #include "esp_bt.h"
 using namespace std;
 RTC_DATA_ATTR int selectedProgram;
 RTC_DATA_ATTR ProgramSleepMode currentSleepMode = ProgramNoSleep;
 
+int defaultProgram = 2;
 int clicks = 0;
 double doubleClickTime = 300;
 double startClickTime = 0;
 bool powerIRQ = false;
-Program* programs[]{new ClockProgram("Clock"),new StopwatchProgram("Timer")};
+Program* programs[]{new ClockProgram("Clock"),new StopwatchProgram("Stopwatch"),new TimerProgram("Timer")};
 TTGOClass *watch;
 TFT_eSPI *tft;
 
@@ -30,10 +32,11 @@ void switchToProgram(int program,bool exit) {
 }
 
 void toggleSleep() {
-	ProgramSleepMode mode = programs[selectedProgram]->sleep();
+	ProgramSleepMode mode = programs[selectedProgram]->getSleepMode();
 	if(currentSleepMode == ProgramNoSleep) { //Put to sleep
 		currentSleepMode = mode;
 		Serial.println("Switching to sleep mode: " + (String)currentSleepMode);
+		programs[selectedProgram]->sleep();
 		switch(currentSleepMode) {
 			case ProgramNoSleep:
 				break;
@@ -55,7 +58,6 @@ void toggleSleep() {
 				esp_deep_sleep_start();
 				break;
 		}
-		programs[selectedProgram]->sleep();
 	} else { //Wakeup
 		switch(currentSleepMode) {
 			case ProgramNoSleep:
@@ -89,11 +91,11 @@ void initWatch() {
 	tft = watch->tft;
 
 	watch->begin();
-
 	watch->rtc->check();
 	watch->rtc->syncToSystem();
 	watch->setBrightness(30);
 	watch->openBL();
+	watch->motor_begin();
 	esp_bt_controller_disable();
 	esp_wifi_stop();
 	pinMode(AXP202_INT, INPUT_PULLUP);
@@ -104,7 +106,7 @@ void initWatch() {
 	watch->power->adc1Enable(AXP202_BATT_CUR_ADC1 | AXP202_BATT_VOL_ADC1,true);
 	watch->power->clearIRQ();
 	if(!selectedProgram) {
-		selectedProgram = 0;
+		selectedProgram = defaultProgram;
 	}
 }
 

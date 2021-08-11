@@ -83,8 +83,12 @@ void StopwatchProgram::update() {
 void StopwatchProgram::sleepUpdate() {
 }
 
-ProgramSleepMode StopwatchProgram::sleep() {
+ProgramSleepMode StopwatchProgram::getSleepMode() {
 	return ProgramLightSleep;
+}
+
+void StopwatchProgram::sleep() {
+	
 }
 
 void StopwatchProgram::wakeup() {

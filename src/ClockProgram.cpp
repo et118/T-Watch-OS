@@ -1,7 +1,5 @@
 #include "ClockProgram.h"
 
-int16_t x;
-int16_t y;
 void ClockProgram::init()
 {
 	watch = TTGOClass::getWatch();
@@ -46,9 +44,13 @@ void ClockProgram::update()
 void ClockProgram::sleepUpdate() {
 }
 
-ProgramSleepMode ClockProgram::sleep()
+ProgramSleepMode ClockProgram::getSleepMode()
 {
 	return ProgramLightSleep;
+}
+
+void ClockProgram::sleep() 
+{
 }
 
 void ClockProgram::wakeup()

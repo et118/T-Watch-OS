@@ -23,7 +23,8 @@ class StopwatchProgram : public Program {
 		void init();
 		void update();
 		void sleepUpdate();
-		ProgramSleepMode sleep();
+		ProgramSleepMode getSleepMode();
+		void sleep();
 		void wakeup();
 		void exit();
 };
