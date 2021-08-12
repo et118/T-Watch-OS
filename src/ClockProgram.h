@@ -2,8 +2,6 @@
 #include <config.h>
 #include "Program.h"
 #include "Arduino.h"
-#include <iostream>
-#include <iomanip>
 
 class ClockProgram : public Program {
 	private:
