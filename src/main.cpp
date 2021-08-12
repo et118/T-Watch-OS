@@ -13,7 +13,7 @@ using namespace std;
 RTC_DATA_ATTR int selectedProgram;
 RTC_DATA_ATTR ProgramSleepMode currentSleepMode = ProgramNoSleep;
 
-int defaultProgram = 3;
+int defaultProgram = 0;
 int clicks = 0;
 double doubleClickTime = 300;
 double startClickTime = 0;
