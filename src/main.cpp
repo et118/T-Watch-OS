@@ -1,9 +1,11 @@
 //TODO Graphics library with buttons and stuff
+//TODO Maybe a click detection library
 #include "config.h"
 #include "InfoLib.h"
 #include "Program.h"
 #include "ClockProgram.h"
 #include "StopwatchProgram.h"
+#include "BluetoothMusicProgram.h"
 #include "TimerProgram.h"
 #include "esp_wifi.h"
 #include "esp_bt.h"
@@ -11,12 +13,12 @@ using namespace std;
 RTC_DATA_ATTR int selectedProgram;
 RTC_DATA_ATTR ProgramSleepMode currentSleepMode = ProgramNoSleep;
 
-int defaultProgram = 2;
+int defaultProgram = 3;
 int clicks = 0;
 double doubleClickTime = 300;
 double startClickTime = 0;
 bool powerIRQ = false;
-Program* programs[]{new ClockProgram("Clock"),new StopwatchProgram("Stopwatch"),new TimerProgram("Timer")};
+Program* programs[]{new ClockProgram("Clock"),new StopwatchProgram("Stopwatch"),new TimerProgram("Timer"),new BluetoothMusicProgram("Music")};
 TTGOClass *watch;
 TFT_eSPI *tft;
 
