@@ -210,5 +210,5 @@ void TimerProgram::wakeup() {
 }
 
 void TimerProgram::exit() {
-
+	std::vector<Button*>().swap(buttons);
 }
