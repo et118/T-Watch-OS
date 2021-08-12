@@ -2,7 +2,7 @@
 #include <config.h>
 #include "Program.h"
 #include "Arduino.h"
-#include "GraphicsLib.h"
+#include <GraphicsLib.h>
 
 class TimerProgram : public Program {
 	private:

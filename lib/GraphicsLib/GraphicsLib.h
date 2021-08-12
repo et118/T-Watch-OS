@@ -1,5 +1,8 @@
 #pragma once
 #include <config.h>
+#include <stdint.h>
+#include "libraries/TFT_eSPI/TFT_eSPI.h"
+
 class Button {
 	private:
 		int x1;
