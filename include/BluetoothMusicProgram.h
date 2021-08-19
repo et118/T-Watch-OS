@@ -2,7 +2,6 @@
 #include <config.h>
 #include "Program.h"
 #include "Arduino.h"
-#include <GraphicsLib.h>
 #include <WebServer.h>
 #include <btAudio.h>
 class BluetoothMusicProgram : public Program {

@@ -5,20 +5,21 @@
 #include "Program.h"
 #include "ClockProgram.h"
 #include "StopwatchProgram.h"
-#include "BluetoothMusicProgram.h"
 #include "TimerProgram.h"
+#include "BluetoothMusicProgram.h"
+#include "WifiCapProgram.h"
 #include "esp_wifi.h"
 #include "esp_bt.h"
 using namespace std;
 RTC_DATA_ATTR int selectedProgram;
 RTC_DATA_ATTR ProgramSleepMode currentSleepMode = ProgramNoSleep;
 
-int defaultProgram = 0;
+int defaultProgram = 4;
 int clicks = 0;
 double doubleClickTime = 300;
 double startClickTime = 0;
 bool powerIRQ = false;
-Program* programs[]{new ClockProgram("Clock"),new StopwatchProgram("Stopwatch"),new TimerProgram("Timer"),new BluetoothMusicProgram("Music")};
+Program* programs[]{new ClockProgram("Clock"),new StopwatchProgram("Stopwatch"),new TimerProgram("Timer"),new BluetoothMusicProgram("Music"),new WifiCapProgram("WiFi")};
 TTGOClass *watch;
 TFT_eSPI *tft;
 
