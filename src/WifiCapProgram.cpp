@@ -82,7 +82,7 @@ void WifiCapProgram::sniffer(void *buf, wifi_promiscuous_pkt_type_t pktType) {
 	
 	if(doesBssidMatch(pkt,macca) && (type != NONE && type != DATA && type != PROBE_REQUEST)){
 		
-		//TODO A
+		//TODO Add probe req packets
 
 		if(type==EAPOL && capturedEapolPackets<maxEapolPackets) {
 			capturedEapolPackets++;
